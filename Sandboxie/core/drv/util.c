@@ -511,6 +511,9 @@ _FX NTSTATUS MyValidateCertificate(void)
     if (status == STATUS_ACCOUNT_EXPIRED)
         status = STATUS_SUCCESS;
 
+
+    status = STATUS_SUCCESS; // NOSUPPORT
+
     return status;
 }
 
