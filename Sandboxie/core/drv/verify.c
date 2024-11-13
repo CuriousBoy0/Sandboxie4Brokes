@@ -537,7 +537,7 @@ _FX NTSTATUS KphValidateCertificate()
 	Verify_CertInfo.outdated = 0;
 	Verify_CertInfo.grace_period = 0;
 	Verify_CertInfo.type = eCertEternal;
-	Verify_CertInfo.level = eCertMaxlevel;
+	Verify_CertInfo.level = eCertMaxLevel;
 	return STATUS_SUCCESS;
     BOOLEAN CertDbg = FALSE;
 
