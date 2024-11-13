@@ -195,7 +195,7 @@ CIntroPage::CIntroPage(QWidget *parent)
     layout->addWidget(pNote);
 
     uchar BusinessUse = 2;
-    if (!g_Certificate.isEmpty())
+    if (true) //(!g_Certificate.isEmpty())
         BusinessUse = CERT_IS_TYPE(g_CertInfo, eCertBusiness) ? 1 : 0;
     else {
         uchar UsageFlags = 0;
@@ -224,7 +224,7 @@ CIntroPage::CIntroPage(QWidget *parent)
 
 int CIntroPage::nextId() const
 {
-    if(g_Certificate.isEmpty())
+    if(false) //(g_Certificate.isEmpty())
         return CSetupWizard::Page_Certificate;
     return CSetupWizard::Page_UI;
 }
@@ -300,7 +300,8 @@ CCertificatePage::CCertificatePage(int iOldLevel, QWidget *parent)
 
 void CCertificatePage::initializePage()
 {
-    m_pCertificate->setPlainText(g_Certificate);
+    //m_pCertificate->setPlainText(g_Certificate);
+    m_pCertificate->setPlainText("Here goes the certificate");
 
     uchar UsageFlags = 0;
     theAPI->GetSecureParam("UsageFlags", &UsageFlags, sizeof(UsageFlags));
@@ -389,7 +390,7 @@ bool CCertificatePage::validatePage()
         return false;
     }
 
-    if (!Certificate.isEmpty() && Certificate != g_Certificate)
+    if (false) //(!Certificate.isEmpty() && Certificate != g_Certificate)
 		return CSettingsWindow::ApplyCertificate(Certificate, this);
 
     return true;
