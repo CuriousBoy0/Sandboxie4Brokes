@@ -1084,7 +1084,7 @@ void CSandMan::UpdateLabel()
 		//auto neon = new CNeonEffect(10, 4, 180); // 140
 		//m_pLabel->setGraphicsEffect(NULL);
 	}
-	else if (g_Certificate.isEmpty())
+	else if (false) // (g_Certificate.isEmpty())
 	{
 		LabelText = tr("<a href=\"https://sandboxie-plus.com/go.php?to=patreon\">Support Sandboxie-Plus on Patreon</a>");
 		LabelTip = tr("Click to open web browser");
@@ -2479,7 +2479,7 @@ void CSandMan::OnStatusChanged()
 		if (!ReloadCert().IsError())
 			CSettingsWindow::LoadCertificate();
 		else {
-			g_Certificate.clear();
+			//g_Certificate.clear();
 
 			QString CertPath = QCoreApplication::applicationDirPath() + "\\Certificate.dat";
 			if(QFile::exists(CertPath)) // always delete invalid certificates
@@ -4387,11 +4387,12 @@ void CSandMan::OnAbout()
 		).arg(theGUI->GetVersion(true));
 
 		QString CertInfo;
+		/*
 		if (!g_Certificate.isEmpty())
 			CertInfo = tr("This copy of Sandboxie-Plus is certified for: %1").arg(GetArguments(g_Certificate, L'\n', L':').value("NAME"));
 		else
 			CertInfo = tr("Sandboxie-Plus is free for personal and non-commercial use.");
-
+		*/
 		QString SbiePath = theAPI->GetSbiePath();
 
 		QString AboutText = tr(
@@ -4623,10 +4624,10 @@ void InitCertSlot()
 		g_MailThread = NULL;
 	}
 
-	auto CertData = GetArguments(g_Certificate, L'\n', L':');
-	QString UpdateKey = CertData.value("UPDATEKEY");
+	//auto CertData = GetArguments(g_Certificate, L'\n', L':');
+	QString UpdateKey =""; // CertData.value("UPDATEKEY");
 	g_SlotName = L"sbie-plus_" + UpdateKey.toStdWString();
-	g_CertAmount = CertData.value("AMOUNT").toInt();
+	g_CertAmount = 999; // CertData.value("AMOUNT").toInt();
 
 	g_MailRun = true;
 	g_MailThread = CreateThread(NULL, 0, MailThreadFunc, NULL, 0, NULL);
